@@ -4,7 +4,7 @@
 #
 Name     : libgweather
 Version  : 3.24.0
-Release  : 1
+Release  : 2
 URL      : http://ftp.acc.umu.se/pub/GNOME/sources/libgweather/3.24/libgweather-3.24.0.tar.xz
 Source0  : http://ftp.acc.umu.se/pub/GNOME/sources/libgweather/3.24/libgweather-3.24.0.tar.xz
 Summary  : GWeather shared library
