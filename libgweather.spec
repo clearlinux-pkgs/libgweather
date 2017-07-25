@@ -4,7 +4,7 @@
 #
 Name     : libgweather
 Version  : 3.24.1
-Release  : 3
+Release  : 4
 URL      : https://download.gnome.org/sources/libgweather/3.24/libgweather-3.24.1.tar.xz
 Source0  : https://download.gnome.org/sources/libgweather/3.24/libgweather-3.24.1.tar.xz
 Summary  : GWeather shared library
@@ -23,6 +23,8 @@ BuildRequires : intltool
 BuildRequires : libxslt-bin
 BuildRequires : perl(XML::Parser)
 BuildRequires : pkgconfig(geocode-glib-1.0)
+BuildRequires : pkgconfig(gio-2.0)
+BuildRequires : pkgconfig(glib-2.0)
 BuildRequires : pkgconfig(gtk+-3.0)
 BuildRequires : pkgconfig(libsoup-2.4)
 BuildRequires : pkgconfig(libxml-2.0)
@@ -86,7 +88,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1496674614
+export SOURCE_DATE_EPOCH=1501002985
+export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
+export FCFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
+export FFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
+export CXXFLAGS="$CXXFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -98,7 +104,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1496674614
+export SOURCE_DATE_EPOCH=1501002985
 rm -rf %{buildroot}
 %make_install
 %find_lang libgweather-3.0
