@@ -4,7 +4,7 @@
 #
 Name     : libgweather
 Version  : 3.24.1
-Release  : 5
+Release  : 6
 URL      : https://download.gnome.org/sources/libgweather/3.24/libgweather-3.24.1.tar.xz
 Source0  : https://download.gnome.org/sources/libgweather/3.24/libgweather-3.24.1.tar.xz
 Summary  : GWeather shared library
