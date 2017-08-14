@@ -4,14 +4,14 @@
 #
 Name     : libgweather
 Version  : 3.24.1
-Release  : 4
+Release  : 5
 URL      : https://download.gnome.org/sources/libgweather/3.24/libgweather-3.24.1.tar.xz
 Source0  : https://download.gnome.org/sources/libgweather/3.24/libgweather-3.24.1.tar.xz
 Summary  : GWeather shared library
 Group    : Development/Tools
 License  : GPL-2.0
-Requires: libgweather-lib
 Requires: libgweather-data
+Requires: libgweather-lib
 Requires: libgweather-doc
 Requires: libgweather-locales
 BuildRequires : docbook-xml
@@ -28,6 +28,8 @@ BuildRequires : pkgconfig(glib-2.0)
 BuildRequires : pkgconfig(gtk+-3.0)
 BuildRequires : pkgconfig(libsoup-2.4)
 BuildRequires : pkgconfig(libxml-2.0)
+BuildRequires : six
+BuildRequires : six-python
 BuildRequires : tzdata
 
 %description
@@ -88,7 +90,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1501002985
+export SOURCE_DATE_EPOCH=1502726914
 export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-semantic-interposition "
@@ -104,7 +106,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1501002985
+export SOURCE_DATE_EPOCH=1502726914
 rm -rf %{buildroot}
 %make_install
 %find_lang libgweather-3.0
