@@ -4,7 +4,7 @@
 #
 Name     : libgweather
 Version  : 3.28.1
-Release  : 10
+Release  : 11
 URL      : https://download.gnome.org/sources/libgweather/3.28/libgweather-3.28.1.tar.xz
 Source0  : https://download.gnome.org/sources/libgweather/3.28/libgweather-3.28.1.tar.xz
 Summary  : No detailed summary available
