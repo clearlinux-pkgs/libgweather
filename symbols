@@ -75,6 +75,7 @@ libgweather-3.so.16:gweather_location_get_coords
 libgweather-3.so.16:gweather_location_get_country
 libgweather-3.so.16:gweather_location_get_country_name
 libgweather-3.so.16:gweather_location_get_distance
+libgweather-3.so.16:gweather_location_get_english_name
 libgweather-3.so.16:gweather_location_get_level
 libgweather-3.so.16:gweather_location_get_name
 libgweather-3.so.16:gweather_location_get_parent
