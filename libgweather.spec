@@ -4,7 +4,7 @@
 #
 Name     : libgweather
 Version  : 3.36.1
-Release  : 23
+Release  : 24
 URL      : https://download.gnome.org/sources/libgweather/3.36/libgweather-3.36.1.tar.xz
 Source0  : https://download.gnome.org/sources/libgweather/3.36/libgweather-3.36.1.tar.xz
 Summary  : No detailed summary available
