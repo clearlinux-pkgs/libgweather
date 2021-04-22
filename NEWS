@@ -1,17 +1,47 @@
-==============
-Version 3.36.1
-==============
+==================
+Version 40.0
+==================
 
-This version works around the unavailability of the NOAA weather services
-by using very short-term forecasts as current weather conditions.
+- Fix possible uninitialized variable in location entry
+- Translations updates
 
-==============
-Version 3.36.0
-==============
+==================
+Version 40.beta
+==================
+- Fix gweather_location_next_child annotations
+- metno: Use alphabetical 2.0 symbol codes
 
-This version contains translation updates, addition of a number of cities
-and airports, some memory leak and possible crash fixes. The
-gweather_location_get_english_name() function is also exported.
+==================
+Version 40.alpha.1
+==================
+
+This version fixes a few major issues that slipped into the last release:
+- Fix warnings related to the new application-id and contact-info properties
+- Fix use-after-free issues when detached locations are used
+- Fix vala binding issues by removing a left over struct definition
+
+================
+Version 40.alpha
+================
+
+This version contains a number of API and ABI changes that applications
+will need to be modified for, including:
+- An application-id as well as contact information must be provided for
+  every application to use online weather services. For GApplication-based
+  applications, the application ID is prefilled.
+- All online weather providers are disabled by default, applications
+  should enable those that it has verified it can follow the terms of
+  service for. Note, for example, the requirement to subscribe to the
+  met.no API users mailing-list.
+- A lot of the getter functions for the location database now return
+  references to objects which the application will need to handle. Applications
+  that use JavaScript or Python bindings should not require special handling
+  for this change.
+
+The library was also modified to use a more-efficient Location database
+format, reducing I/O when instantiated, online weather fetching uses a
+maximum of 4 decimals in coordinates for queries to enhance caching, and
+the yr.no backend was renamed to Met.no.
 
 ==============
 Version 3.34.0
