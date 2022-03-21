@@ -4,7 +4,7 @@
 #
 Name     : libgweather
 Version  : 40.0
-Release  : 25
+Release  : 26
 URL      : https://download.gnome.org/sources/libgweather/40/libgweather-40.0.tar.xz
 Source0  : https://download.gnome.org/sources/libgweather/40/libgweather-40.0.tar.xz
 Summary  : No detailed summary available
