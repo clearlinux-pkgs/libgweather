@@ -2,3 +2,5 @@
 # picked up automatically. One name per line, no whitespace.
 tzdata
 gobject-introspection-dev
+gi-docgen
+pygobject

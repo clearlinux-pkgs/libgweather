@@ -1,0 +1,10 @@
+--- libgweather-4.0.0/meson.build~	2022-03-18 16:33:02.000000000 +0000
++++ libgweather-4.0.0/meson.build	2022-03-21 17:45:59.310231244 +0000
+@@ -52,7 +52,6 @@
+ subdir('data')
+ subdir('schemas')
+ subdir('libgweather')
+-subdir('doc')
+ subdir('po')
+ subdir('po-locations')
+ 

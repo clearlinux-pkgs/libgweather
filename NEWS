@@ -1,3 +1,66 @@
+GWeather 4.0.0 (stable)
+=======================
+
+Changes since GWeather 3.99
+---------------------------
+
+- Translation updates
+
+GWeather 3.99.0 (release candidate for 4.0)
+===========================================
+
+Changes since GWeather 3.91
+---------------------------
+
+- Translation updates
+- Updated location database
+
+GWeather 3.91.0 (development snapshot)
+======================================
+
+Changes since GWeather 3.90
+---------------------------
+
+- Renamed `gweather-weather.h` to `gweather-info.h`
+- Removed GWeatherTimezone
+- New locations: Palestine cities, county capitals in Romania
+- Fix Vala binding of Location.detect_nearest_city() [Rico Tzschichholz]
+- Add GWeather.Location.has_timezone()
+- Depend on GLib ≥ 2.68 [Will Thompson]
+- Fix build on 32bit architectures [Javier Jardón]
+- Documentation updates in the migration guide
+- Translation updates
+
+GWeather 3.90.0 (development snapshot)
+======================================
+
+Changes since GWeather 40.0
+---------------------------
+
+- New major API
+- Remove uses of deprecated API
+- Use explicit symbol versioning
+- Move to gi-docgen for generating the API reference
+- Remove the widgets, along with the GTK3 dependency
+- Remove the dependency on gdk-pixbuf
+- Fix a memory leak in GWeather.Info.get_location_name() [#80]
+- Use the appropriate Unicode for temperature units [#8]
+- Support building libgweather with libsoup3
+- Translation updates
+
+Changes in the locations database
+---------------------------------
+
+- Add missing Italian capitals of provinces
+- Add missing Spanish capitals of provinces
+- Add Petrozavodsk city
+- Add city Multan, Pakistan and Multan Airport
+- Add Half Moon Bay for a coastal Bay Area reference
+- Quetta and Peshawar added (cities in Pakistan)
+- Added Albany Airport, Western Australia (YABA)
+- Add Santa Fe city and its airport
+- Fix Astrakhan' timezone [#83]
+
 ==================
 Version 40.0
 ==================
@@ -960,7 +1023,7 @@ Version 2.29.91
 	* Emilio Pozuelo Monfort (Canberra, AU)
 	* Frank Solensky (St. Moritz, CH and Ankara, TR)
 	* Vincent Untz (Antartica)
-        
+
   Translators
 	* Alexander Shopov (bg)
 	* Petr Kovar (cs)

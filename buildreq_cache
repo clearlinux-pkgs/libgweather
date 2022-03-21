@@ -1,2 +1,2 @@
-40.0
-pygobject
+4.0.0
+pkgconfig(gi-docgen)
