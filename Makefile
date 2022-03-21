@@ -1,5 +1,5 @@
 PKG_NAME := libgweather
-URL = https://download.gnome.org/sources/libgweather/4.0/libgweather-4.0.0.tar.xz
+URL = https://download.gnome.org/sources/libgweather/40/libgweather-40.0.tar.xz
 ARCHIVES = 
 
 include ../common/Makefile.common
