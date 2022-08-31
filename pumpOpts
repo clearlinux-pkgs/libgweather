@@ -1,2 +1,2 @@
 devel_version = odd
-regex_ban = ^40\..*
+regex_ban = ^40\.?.*
