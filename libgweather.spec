@@ -4,7 +4,7 @@
 #
 Name     : libgweather
 Version  : 4.2.0
-Release  : 29
+Release  : 30
 URL      : https://download.gnome.org/sources/libgweather/4.2/libgweather-4.2.0.tar.xz
 Source0  : https://download.gnome.org/sources/libgweather/4.2/libgweather-4.2.0.tar.xz
 Summary  : No detailed summary available
