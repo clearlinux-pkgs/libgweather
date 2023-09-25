@@ -4,10 +4,10 @@
 # Using build pattern: meson
 #
 Name     : libgweather
-Version  : 4.2.0
-Release  : 32
-URL      : https://download.gnome.org/sources/libgweather/4.2/libgweather-4.2.0.tar.xz
-Source0  : https://download.gnome.org/sources/libgweather/4.2/libgweather-4.2.0.tar.xz
+Version  : 4.4.0
+Release  : 33
+URL      : https://download.gnome.org/sources/libgweather/4.4/libgweather-4.4.0.tar.xz
+Source0  : https://download.gnome.org/sources/libgweather/4.4/libgweather-4.4.0.tar.xz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -23,7 +23,6 @@ BuildRequires : json-glib-dev
 BuildRequires : pkgconfig(geocode-glib-2.0)
 BuildRequires : pkgconfig(gi-docgen)
 BuildRequires : pkgconfig(json-glib-1.0)
-BuildRequires : pkgconfig(libsoup-3.0)
 BuildRequires : pkgconfig(libxml-2.0)
 BuildRequires : pygobject
 BuildRequires : tzdata
@@ -89,25 +88,30 @@ locales components for the libgweather package.
 
 
 %prep
-%setup -q -n libgweather-4.2.0
-cd %{_builddir}/libgweather-4.2.0
+%setup -q -n libgweather-4.4.0
+cd %{_builddir}/libgweather-4.4.0
+pushd ..
+cp -a libgweather-4.4.0 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1680038405
+export SOURCE_DATE_EPOCH=1695668457
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -Os -fdata-sections -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -Os -fdata-sections -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -Os -fdata-sections -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -Os -fdata-sections -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddir
 ninja -v -C builddir
+CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddiravx2
+ninja -v -C builddiravx2
 
 %check
 export LANG=C.UTF-8
@@ -119,9 +123,11 @@ meson test -C builddir --print-errorlogs || :
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/libgweather
 cp %{_builddir}/libgweather-%{version}/COPYING %{buildroot}/usr/share/package-licenses/libgweather/4cc77b90af91e615a64ae04893fdffa7939db84c || :
+DESTDIR=%{buildroot}-v3 ninja -C builddiravx2 install
 DESTDIR=%{buildroot} ninja -C builddir install
 %find_lang libgweather-4.0
 %find_lang libgweather-4.0-locations
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -315,8 +321,9 @@ DESTDIR=%{buildroot} ninja -C builddir install
 
 %files lib
 %defattr(-,root,root,-)
+/V3/usr/lib64/libgweather-4.so.0.400.0
 /usr/lib64/libgweather-4.so.0
-/usr/lib64/libgweather-4.so.0.200.0
+/usr/lib64/libgweather-4.so.0.400.0
 
 %files license
 %defattr(0644,root,root,0755)
